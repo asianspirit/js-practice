@@ -135,7 +135,171 @@
 4) Потренироваться и переписать цикл еще двумя способами*/
 
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
+// const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
+
+// const personalMovieDB = {
+//     count: numberOfFilms,
+//     movies: {},
+//     actors: {},
+//     genres: [],
+//     privat: false
+// };
+
+
+ 
+
+// for (let i = 0; i < 2; i++){
+//     const a = prompt('Один из последних просмотренных фильмов?'),
+//           b = prompt('На сколько оцените его?');
+    
+//     if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+//         personalMovieDB.movies[a] = b; 
+//         console.log('done');  
+//     }   else {
+//         console.log('error');
+//         i--;
+//     }   
+
+           
+// }
+
+
+// if (personalMovieDB.count < 10) {
+//     alert('Просмотрено довольно мало фильмов');
+// } else if (personalMovieDB.count >= 10 && personalMovieDB < 30) {
+//     alert('Вы классический зритель');
+// } else if (personalMovieDB >= 30){
+//     alert('Вы киноман');
+// } else {
+//     alert('Произошла ошибка');
+// }
+
+// console.log(personalMovieDB);
+
+// конец изученеи циклов 
+
+
+// старт изучения функций
+
+// глобальаня перменная 
+let num = 20; 
+
+function showFirstMessage(text) {
+     console.log(text); 
+     //  локальная переменная с ней нельзя работать вне функции
+    let num = 10;   
+}
+
+showFirstMessage("hellow world");
+console.log(num);
+
+
+function calc (a, b) {
+    return (a + b);     //  return заканчивает функцию и есо ипосле нее что-то будет написано оно будет уже нечетабельно для функции
+}
+
+console.log(calc(4, 3));
+console.log(calc(7, 3));
+console.log(calc(12, 3));
+
+
+
+function ret() {
+    let num = 50;
+    return num;   /*возвращает значение своей локальнйо перменной */
+}
+
+const anotheNum = ret();
+console.log(anotheNum);
+
+
+
+const logger = function() {
+      console.log('hellow');
+};
+
+logger();
+
+
+const cal = (a, b) => {
+    
+    return a + b;
+
+};
+
+
+// Методы и свойсвта строк и чисел 
+
+const str = 'test';
+
+console.log(str.length);  /* это свойство */
+
+console.log(str.toUpperCase()); /* это метод */
+
+const fruit = 'some fruit';
+
+
+console.log(fruit.indexOf('fruit'));  /* поиск есть ли такой кусок внутри искомой строки (поиск подстроки) */ 
+
+
+const logg = 'hellow world';
+
+// метод который вырезает от ночала до коныа строки 
+console.log(logg.slice(6, 10));  
+
+// метод который вырезает от ночала до коныа строки тот же самый метод(но не может рабоатть с отрицательынми значениями)
+console.log(logg.substring(6, 10)); 
+
+// метод говорит сколько символов вырезать
+console.log(logg.substr(6, 10)); 
+
+
+
+// числа 
+
+// библиотке свйоств и методов с числами Math 
+
+
+// метод округления 
+const number = 12.2;
+console.log(Math.round(number));
+
+// метод котоыре переводит в другую систему изчисления из строки в число 
+const test = '12.2px';
+console.log(parseInt(test));
+
+// метод котоыре переводит в десятичнй вариант с плавующей точкой
+console.log(parseFloat(test));
+
+
+/* Задание на урок:
+
+1) Первую часть задания повторить по уроку
+
+2) Создать функцию showMyDB, которая будет проверять свойство privat. Если стоит в позиции
+false - выводит в консоль главный объект программы
+
+3) Создать функцию writeYourGenres в которой пользователь будет 3 раза отвечать на вопрос 
+"Ваш любимый жанр под номером ${номер по порядку}". Каждый ответ записывается в массив данных
+genres
+
+P.S. Функции вызывать не обязательно*/
+
+
+
+let numberOfFilms ;
+
+
+function start() {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    
+    // услови пока пользователь вводит пустую строку или нажимает отмену или вводит не число, тогда вопрос будет повторяться 
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+}
+
+start();
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -148,33 +312,63 @@ const personalMovieDB = {
 
  
 
-for (let i = 0; i < 2; i++){
-    const a = prompt('Один из последних просмотренных фильмов?'),
-          b = prompt('На сколько оцените его?');
-    
-    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-        personalMovieDB.movies[a] = b; 
-        console.log('done');  
-    }   else {
-        console.log('error');
-        i--;
-    }   
 
-           
+
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++){
+        const a = prompt('Один из последних просмотренных фильмов?' , ''),
+              b = prompt('На сколько оцените его?' , '');
+        
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b; 
+            console.log('done');  
+        }   else {
+            console.log('error');
+            i--;
+        }   
+            
+    }
+}
+
+rememberMyFilms();
+
+
+
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        alert('Просмотрено довольно мало фильмов');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB < 30) {
+        alert('Вы классический зритель');
+    } else if (personalMovieDB >= 30){
+        alert('Вы киноман');
+    } else {
+        alert('Произошла ошибка');
+    }
+}
+
+detectPersonalLevel();
+
+
+function showMyDB (hidden) {
+    if (!hidden){
+        console.log(personalMovieDB);
+    }
+
 }
 
 
-if (personalMovieDB.count < 10) {
-    alert('Просмотрено довольно мало фильмов');
-} else if (personalMovieDB.count >= 10 && personalMovieDB < 30) {
-    alert('Вы классический зритель');
-} else if (personalMovieDB >= 30){
-    alert('Вы киноман');
-} else {
-    alert('Произошла ошибка');
+showMyDB(personalMovieDB.privat);
+
+
+function writeYourGenres () {
+    for (let i = 1; i <= 3; i++) {
+        const genre = prompt(`Ваш любимый жанр под номером ${i}`);
+        personalMovieDB.genres[i - 1] = genre;
+    }
 }
 
-console.log(personalMovieDB);
+writeYourGenres();
 
 
+// конец изучения функций 
 
